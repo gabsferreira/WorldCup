@@ -9,12 +9,17 @@ namespace WorldCup.API.Models
     public class Cup
     {
         public Guid Id { get; set; }
-        public IEnumerable<Movie> Filmes { get; }
+        public IReadOnlyList<Movie> Movies { get; set; }
 
-        public Cup(IEnumerable<Movie> filmes)
+        public Cup(List<Movie> movies)
         {
             Id = new Guid();
-            this.Filmes = filmes;
+            this.Movies = movies;
+        }
+
+        public void SortAlphabetically()
+        {
+            this.Movies = this.Movies.OrderBy(m => m.Title).ToList();
         }
     }
 }

@@ -7,7 +7,7 @@ namespace WorldCup.Tests
 {
     public class MovieGenerator
     {
-        public static IEnumerable<Movie> GetDefaultMovieList()
+        public static List<Movie> GetDefaultMovieList()
         {
             Movie newMovie = new Movie("tt3606756", "Os Incríveis 2", 2018, 8.5);
 
