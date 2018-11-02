@@ -3,12 +3,12 @@ using Xunit;
 
 namespace WorldCup.Tests
 {
-    public class UnitTest1
+    public class WorldCupShould
     {
         [Fact]
-        public void Test1()
+        public void RunAndHaveTheRightMovieOrder()
         {
-
+            
         }
     }
 }
