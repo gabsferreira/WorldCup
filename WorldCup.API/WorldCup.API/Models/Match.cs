@@ -17,10 +17,11 @@ namespace WorldCup.API.Models
             this.Players = players;
         }
 
-        public void Play ()
+        public void Play()
         {
-            this.Players.OrderByDescending(x => x.Rating)
-                .ThenBy(x => x.Title)
+            this.Players = this.Players
+                .OrderByDescending(p => p.Rating)
+                .ThenBy(p => p.Title)
                 .ToList();
 
             this.Winner = this.Players.First();

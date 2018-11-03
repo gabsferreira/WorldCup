@@ -12,8 +12,6 @@ namespace WorldCup.Tests
         {
             Cup sut = new Cup(MovieGenerator.GetDefaultMovieList());
 
-            sut.SortAlphabetically();
-
             Assert.Matches(sut.Movies[0].Title, "Deadpool 2");
             Assert.Matches(sut.Movies[1].Title, "Han Solo: Uma História Star Wars");
             Assert.Matches(sut.Movies[2].Title, "Hereditário");
@@ -22,6 +20,19 @@ namespace WorldCup.Tests
             Assert.Matches(sut.Movies[5].Title, "Os Incríveis 2");
             Assert.Matches(sut.Movies[6].Title, "Thor: Ragnarok");
             Assert.Matches(sut.Movies[7].Title, "Vingadores: Guerra Infinita");
+        }
+
+        [Fact]
+        public void RunAndHaveRightMoviesForSemiFinals()
+        {
+            Cup sut = new Cup(MovieGenerator.GetDefaultMovieList());
+
+            sut.Run();
+
+            Assert.Matches(sut.FirstPhase.Winners[0].Title, "Vingadores: Guerra Infinita");
+            Assert.Matches(sut.FirstPhase.Winners[1].Title, "Thor: Ragnarok");
+            Assert.Matches(sut.FirstPhase.Winners[2].Title, "Os Incríveis 2");
+            Assert.Matches(sut.FirstPhase.Winners[3].Title, "Jurassic World: Reino Ameaçado");
         }
     }
 }
