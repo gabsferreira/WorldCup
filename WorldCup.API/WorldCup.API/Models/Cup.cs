@@ -15,7 +15,7 @@ namespace WorldCup.API.Models
         public Phase SemiFinal { get; protected set; }
         public Phase Final { get; protected set; }
 
-        public Cup(List<Movie> movies)
+        public Cup(IEnumerable<Movie> movies)
         {
             Id = new Guid();
             this.Movies = movies.OrderBy(m => m.Title).ToList();
