@@ -28,6 +28,7 @@ namespace WorldCup.API.Models
             this.FirstPhase.Run();
 
             this.SemiFinal = new Semifinal(this.FirstPhase.Winners);
+            this.SemiFinal.Run();
         }
     }
 }
