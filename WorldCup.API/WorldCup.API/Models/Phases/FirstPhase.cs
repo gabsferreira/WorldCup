@@ -27,15 +27,5 @@ namespace WorldCup.API.Models.Phases
                 this.Matches.Add(match);
             }    
         }
-
-        public override void Run()
-        {
-            foreach (var match in this.Matches)
-            {
-                match.Play();
-                this.Winners.Add(match.Winner);
-                this.Losers.Add(match.Loser);
-            }
-        }
     }
 }
