@@ -13,7 +13,6 @@ namespace WorldCup.API.Models.Phases
         public Semifinal(IEnumerable<Movie> players)
         {
             MakeMatches(players);
-            this.Winners = new List<Movie>();
         }
 
         private void MakeMatches(IEnumerable<Movie> players)
