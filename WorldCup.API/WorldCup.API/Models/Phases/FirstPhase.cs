@@ -13,11 +13,12 @@ namespace WorldCup.API.Models.Phases
         public FirstPhase(IEnumerable<Movie> players)
         {
             MakeMatches(players);
+            this.Winners = new List<Movie>();
         }
 
         private void MakeMatches(IEnumerable<Movie> players)
         {
-            for (int i = 0; i < numberOfMatches ; i++)
+            for (int i = 0; i < numberOfMatches; i++)
             {
                 var firstPlayer = players.Skip(i).Take(1).First();
                 var secondPlayer = players.Skip(players.Count() - i - 1).Take(1).First();
@@ -30,7 +31,12 @@ namespace WorldCup.API.Models.Phases
 
         public override void Run()
         {
-            
+            foreach (var match in this.Matches)
+            {
+                match.Play();
+                this.Winners.Add(match.Winner);
+                this.Losers.Add(match.Loser);
+            }
         }
     }
 }
