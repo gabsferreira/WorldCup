@@ -45,5 +45,15 @@ namespace WorldCup.Tests
             Assert.Matches(sut.SemiFinal.Winners[0].Title, "Vingadores: Guerra Infinita");
             Assert.Matches(sut.SemiFinal.Winners[1].Title, "Os Incríveis 2");
         }
+
+        [Fact]
+        public void RunAndHaveRightWinner()
+        {
+            Cup sut = new Cup(MovieGenerator.GetDefaultMovieList());
+
+            sut.Run();
+
+            Assert.Matches(sut.SemiFinal.Winners[0].Title, "Vingadores: Guerra Infinita");
+        }
     }
 }
