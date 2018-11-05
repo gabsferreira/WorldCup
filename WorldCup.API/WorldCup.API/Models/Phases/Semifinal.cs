@@ -15,7 +15,7 @@ namespace WorldCup.API.Models.Phases
             MakeMatches(players);
         }
 
-        private void MakeMatches(IEnumerable<Movie> players)
+        protected override void MakeMatches(IEnumerable<Movie> players)
         {
             Match firstMatch = new Match(players.Skip(0).Take(2).ToList());
             Match secondMatch = new Match(players.Skip(numberOfMatches).Take(2).ToList());

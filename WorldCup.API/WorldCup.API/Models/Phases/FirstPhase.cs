@@ -15,7 +15,7 @@ namespace WorldCup.API.Models.Phases
             MakeMatches(players);
         }
 
-        private void MakeMatches(IEnumerable<Movie> players)
+        protected override void MakeMatches(IEnumerable<Movie> players)
         {
             for (int i = 0; i < numberOfMatches; i++)
             {

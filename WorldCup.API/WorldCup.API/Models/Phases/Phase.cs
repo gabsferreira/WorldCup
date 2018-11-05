@@ -19,6 +19,8 @@ namespace WorldCup.API.Models
             this.Losers = new List<Movie>();
         }
 
+        protected abstract void MakeMatches(IEnumerable<Movie> players);
+
         public virtual void Run()
         {
             foreach (var match in this.Matches)
