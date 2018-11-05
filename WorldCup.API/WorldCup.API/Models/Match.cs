@@ -8,8 +8,8 @@ namespace WorldCup.API.Models
 {
     public class Match
     {
-        public Movie Winner { get; protected set; }
-        public Movie Loser { get; protected set; }
+        public Movie Winner { get; private set; }
+        public Movie Loser { get; private set; }
         private IEnumerable<Movie> Players;
 
         public Match(IEnumerable<Movie> players)
