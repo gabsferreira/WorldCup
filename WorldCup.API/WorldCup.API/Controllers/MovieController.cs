@@ -1,16 +1,28 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 
 namespace WorldCup.API.Controllers
 {
-    public class MovieController : Controller
+    [Route("api/[controller]")]
+    [ApiController]
+    public class MovieController : ControllerBase
     {
-        public IActionResult Index()
+        public async Task<IActionResult> Get()
         {
-            return View();
+            HttpClient httpClient = new HttpClient();
+
+            var responseMessage = await httpClient.GetAsync("https://copafilmes.azurewebsites.net/api/filmes");
+
+            if (!responseMessage.IsSuccessStatusCode) return null;
+
+            var jsonResult = await responseMessage.Content.ReadAsStringAsync();
+
+            return Ok(jsonResult);
         }
     }
 }
