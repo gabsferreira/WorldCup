@@ -6,6 +6,8 @@ using Microsoft.Extensions.DependencyInjection;
 using AutoMapper;
 using System.Net.Http;
 using WorldCup.API.Settings;
+using WorldCup.API.Repositories;
+using WorldCup.API.Models;
 
 namespace WorldCup.API
 {
@@ -27,6 +29,7 @@ namespace WorldCup.API
             services.AddAutoMapper();
 
             services.AddScoped<HttpClient>();
+            services.AddScoped<IRepository<Cup>, CupRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

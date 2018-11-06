@@ -3,6 +3,7 @@ using System.Linq;
 using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using WorldCup.API.Models;
+using WorldCup.API.Repositories;
 using WorldCup.API.ViewModels;
 using WorldCupAPI.Models;
 
@@ -13,10 +14,12 @@ namespace WorldCup.API.Controllers
     public class CupController : ControllerBase
     {
         private readonly IMapper mapper;
+        private readonly IRepository<Cup> repository;
 
-        public CupController(IMapper mapper)
+        public CupController(IMapper mapper, IRepository<Cup> repository)
         {
             this.mapper = mapper;
+            this.repository = repository;
         }
 
         [HttpPost]
@@ -26,6 +29,7 @@ namespace WorldCup.API.Controllers
 
             var cup = new Cup(movies);
             cup.Run();
+            repository.Save(cup);
 
             return CreatedAtRoute("Get", new { id = cup.Id }, cup);
         }
