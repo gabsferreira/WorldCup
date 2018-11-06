@@ -1,5 +1,4 @@
 ﻿using System;
-using WorldCup.API.Models;
 
 namespace WorldCup.API.Repositories
 {

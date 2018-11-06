@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
@@ -31,15 +32,20 @@ namespace WorldCup.API.Controllers
             cup.Run();
             repository.Save(cup);
 
-            return CreatedAtRoute("Get", new { id = cup.Id }, cup);
+            return Created(cup.Id.ToString(), cup);
         }
 
         [HttpGet("{id}", Name = "Get")]
-        public IActionResult Get([FromRoute] string id)
+        public IActionResult Get([FromRoute] Guid id)
         {
-            string teste = id;
+            var cup = repository.GetById(id);
 
-            return Ok();
+            if (cup == null)
+                return NotFound();
+
+            var cupViewModel = mapper.Map<CupViewModel>(cup);
+
+            return Ok(cupViewModel);
         }
     }
 }
