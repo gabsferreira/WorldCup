@@ -4,6 +4,8 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using AutoMapper;
+using System.Net.Http;
+using WorldCup.API.Settings;
 
 namespace WorldCup.API
 {
@@ -23,6 +25,8 @@ namespace WorldCup.API
 
             services.AddCors();
             services.AddAutoMapper();
+
+            services.AddScoped<HttpClient>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -41,6 +45,7 @@ namespace WorldCup.API
                 options => options.AllowAnyOrigin()
                 .AllowAnyMethod()
                 .AllowAnyHeader()
+                .WithExposedHeaders("Location")
             );
 
             app.UseHttpsRedirection();

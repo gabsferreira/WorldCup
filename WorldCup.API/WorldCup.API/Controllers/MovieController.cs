@@ -8,17 +8,23 @@ namespace WorldCup.API.Controllers
     [ApiController]
     public class MovieController : ControllerBase
     {
+        private readonly HttpClient httpClient;
+
+        public MovieController(HttpClient httpClient)
+        {
+            this.httpClient = httpClient;
+        }
+
         public async Task<IActionResult> Get()
         {
-            HttpClient httpClient = new HttpClient();
+            var response = await httpClient.GetAsync("https://copafilmes.azurewebsites.net/api/filmes");
 
-            var responseMessage = await httpClient.GetAsync("https://copafilmes.azurewebsites.net/api/filmes");
+            if (!response.IsSuccessStatusCode)
+                return NotFound();
 
-            if (!responseMessage.IsSuccessStatusCode) return null;
+            var result = await response.Content.ReadAsStringAsync();
 
-            var jsonResult = await responseMessage.Content.ReadAsStringAsync();
-
-            return Ok(jsonResult);
+            return Ok(result);
         }
     }
 }
