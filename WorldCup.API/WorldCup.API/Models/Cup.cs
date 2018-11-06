@@ -9,15 +9,15 @@ namespace WorldCup.API.Models
 {
     public class Cup
     {
-        public Guid Id { get; protected set; }
-        public IReadOnlyList<Movie> Movies { get; set; }
-        public Phase FirstPhase { get; protected set; }
-        public Phase SemiFinal { get; protected set; }
-        public Phase Final { get; protected set; }
+        public Guid Id { get; private set; }
+        public IReadOnlyList<Movie> Movies { get; }
+        public Phase FirstPhase { get; private set; }
+        public Phase SemiFinal { get; private set; }
+        public Phase Final { get; private set; }
 
         public Cup(IEnumerable<Movie> movies)
         {
-            Id = new Guid();
+            Id = Guid.NewGuid();
             this.Movies = movies.OrderBy(m => m.Title).ToList();
 
             this.FirstPhase = new FirstPhase(this.Movies);
