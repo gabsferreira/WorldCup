@@ -2,6 +2,7 @@ using System;
 using WorldCup.API.Models;
 using WorldCupAPI.Models;
 using Xunit;
+using WorldCup.API.Exceptions;
 
 namespace WorldCup.Tests
 {
@@ -10,7 +11,7 @@ namespace WorldCup.Tests
         [Fact]
         public void RunAndHaveTheRightMovieOrder()
         {
-            Cup sut = new Cup(MovieGenerator.GetDefaultMovieList());
+            Cup sut = new Cup(FakeMovieGenerator.GetDefaultMovieList());
 
             Assert.Matches(sut.Movies[0].Title, "Deadpool 2");
             Assert.Matches(sut.Movies[1].Title, "Han Solo: Uma História Star Wars");
@@ -25,7 +26,7 @@ namespace WorldCup.Tests
         [Fact]
         public void RunAndHaveRightMoviesForSemiFinal()
         {
-            Cup sut = new Cup(MovieGenerator.GetDefaultMovieList());
+            Cup sut = new Cup(FakeMovieGenerator.GetDefaultMovieList());
 
             sut.Run();
 
@@ -38,7 +39,7 @@ namespace WorldCup.Tests
         [Fact]
         public void RunAndHaveRightMoviesForFinal()
         {
-            Cup sut = new Cup(MovieGenerator.GetDefaultMovieList());
+            Cup sut = new Cup(FakeMovieGenerator.GetDefaultMovieList());
 
             sut.Run();
 
@@ -49,11 +50,17 @@ namespace WorldCup.Tests
         [Fact]
         public void RunAndHaveRightWinner()
         {
-            Cup sut = new Cup(MovieGenerator.GetDefaultMovieList());
+            Cup sut = new Cup(FakeMovieGenerator.GetDefaultMovieList());
 
             sut.Run();
 
             Assert.Matches(sut.SemiFinal.Winners[0].Title, "Vingadores: Guerra Infinita");
+        }
+
+        [Fact]
+        public void ThrowExceptionWhenNumberOfMoviesIsNotCorrect()
+        {
+            Assert.Throws<InvalidNumberOfMoviesException>(() =>  new Cup(FakeMovieGenerator.GetListWithTwoMovies()));
         }
     }
 }

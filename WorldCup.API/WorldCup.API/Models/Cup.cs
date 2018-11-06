@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using WorldCup.API.Exceptions;
 using WorldCup.API.Models.Phases;
 using WorldCupAPI.Models;
 
@@ -17,6 +18,9 @@ namespace WorldCup.API.Models
 
         public Cup(IEnumerable<Movie> movies)
         {
+            if (movies.Count() != 8)
+                throw new InvalidNumberOfMoviesException();
+
             Id = Guid.NewGuid();
             this.Movies = movies.OrderBy(m => m.Title).ToList();
 
