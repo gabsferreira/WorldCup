@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
-namespace WorldCupAPI.Models
+﻿namespace WorldCupAPI.Models
 {
     public class Movie
     {

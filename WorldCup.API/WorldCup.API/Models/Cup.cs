@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 using WorldCup.API.Exceptions;
 using WorldCup.API.Models.Phases;
 using WorldCupAPI.Models;
