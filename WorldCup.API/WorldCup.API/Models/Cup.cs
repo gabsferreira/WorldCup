@@ -33,7 +33,7 @@ namespace WorldCup.API.Models
         {
             this.FirstPhase.Run();
 
-            this.SemiFinal = new Semifinal(this.FirstPhase.Winners);
+            this.SemiFinal = new SemiFinal(this.FirstPhase.Winners);
             this.SemiFinal.Run();
 
             this.Final = new Final(this.SemiFinal.Winners);

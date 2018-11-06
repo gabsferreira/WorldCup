@@ -1,14 +1,21 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using WorldCup.API.Exceptions;
 using WorldCupAPI.Models;
 
 namespace WorldCup.API.Models.Phases
 {
-    public class Semifinal : Phase
+    public class SemiFinal : Phase
     {
         private const int numberOfMatches = 2;
 
-        public Semifinal(IEnumerable<Movie> players) : base(players) { }
+        public SemiFinal(IEnumerable<Movie> movies) : base(movies)
+        {
+            if (movies.Count() != 4)
+                throw new InvalidNumberOfMoviesException();
+
+            MakeMatches(movies);
+        }
 
         protected override void MakeMatches(IEnumerable<Movie> players)
         {

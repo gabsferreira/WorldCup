@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using WorldCup.API.Exceptions;
 using WorldCupAPI.Models;
 
 namespace WorldCup.API.Models.Phases
@@ -8,7 +9,13 @@ namespace WorldCup.API.Models.Phases
     {
         private const int numberOfMatches = 4;
 
-        public FirstPhase(IEnumerable<Movie> players) : base(players) { }
+        public FirstPhase(IEnumerable<Movie> movies) : base(movies)
+        {
+            if (movies.Count() != 8)
+                throw new InvalidNumberOfMoviesException();
+
+            MakeMatches(movies);
+        }
 
         protected override void MakeMatches(IEnumerable<Movie> players)
         {
