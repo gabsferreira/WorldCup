@@ -7,6 +7,8 @@
         public int Year { get; private set; }
         public double Rating { get; private set; }
 
+        public Movie(){}
+
         public Movie(string id, string title, int year, double rating)
         {
             this.Id = id;
