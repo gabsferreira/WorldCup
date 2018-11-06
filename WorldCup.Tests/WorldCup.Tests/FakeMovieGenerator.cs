@@ -7,10 +7,8 @@ namespace WorldCup.Tests
 {
     public class FakeMovieGenerator
     {
-        public static IList<Movie> GetDefaultMovieList()
+        public static IEnumerable<Movie> GetDefaultMovieList()
         {
-            Movie newMovie = new Movie("tt3606756", "Os Incríveis 2", 2018, 8.5);
-
             return new List<Movie>
             {
                 new Movie("tt3606756", "Os Incríveis 2", 2018, 8.5),
@@ -24,5 +22,13 @@ namespace WorldCup.Tests
             };
         }
 
+        public static IEnumerable<Movie> GetListWithTwoMovies()
+        {
+            return new List<Movie>
+            {
+                new Movie("tt3606756", "Os Incríveis 2", 2018, 8.5),
+                new Movie("tt4881806", "Jurassic World: Reino Ameaçado", 2018, 6.7)
+            };
+        }
     }
 }
