@@ -12,10 +12,7 @@ namespace WorldCup.API.Models
         public Movie Loser { get; private set; }
         private IEnumerable<Movie> Players;
 
-        public Match(IEnumerable<Movie> players)
-        {
-            this.Players = players;
-        }
+        public Match(IEnumerable<Movie> players) => this.Players = players;
 
         public void Play()
         {

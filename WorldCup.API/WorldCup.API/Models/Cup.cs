@@ -16,6 +16,9 @@ namespace WorldCup.API.Models
         public Phase SemiFinal { get; private set; }
         public Phase Final { get; private set; }
 
+        public Movie Champion => Final.Winners.Single();
+        public Movie SecondPlace => Final.Losers.Single();
+
         public Cup(IEnumerable<Movie> movies)
         {
             if (movies.Count() != 8)

@@ -10,10 +10,7 @@ namespace WorldCup.API.Models.Phases
     {
         private const int numberOfMatches = 4;
 
-        public FirstPhase(IEnumerable<Movie> players)
-        {
-            MakeMatches(players);
-        }
+        public FirstPhase(IEnumerable<Movie> players) : base(players) { }
 
         protected override void MakeMatches(IEnumerable<Movie> players)
         {

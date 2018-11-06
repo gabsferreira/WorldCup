@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 using WorldCup.API.Models;
 using WorldCup.API.ViewModels;
@@ -21,7 +22,6 @@ namespace WorldCup.API.Controllers
             this.mapper = mapper;
         }
 
-        // POST api/values
         [HttpPost]
         public IActionResult Post([FromBody] IEnumerable<MovieViewModel> moviesViewModel)
         {
@@ -30,7 +30,15 @@ namespace WorldCup.API.Controllers
             var cup = new Cup(movies);
             cup.Run();
 
-            return CreatedAtRoute("Get", cup);
+            return CreatedAtRoute("Get", new { id = cup.Id }, cup);
+        }
+
+        [HttpGet("{id}", Name = "Get")]
+        public IActionResult Get([FromRoute] string id)
+        {
+            string teste = id;
+
+            return Ok();
         }
     }
 }
