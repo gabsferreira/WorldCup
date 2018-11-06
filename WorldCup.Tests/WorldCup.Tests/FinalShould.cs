@@ -14,5 +14,12 @@ namespace WorldCup.Tests
         {
             Assert.Throws<InvalidNumberOfMoviesException>(() => new Final(FakeMovieGenerator.GetDefaultMovieList()));
         }
+
+        [Fact]
+        public void HaveTheRightNumberOfMatchesAfterRun()
+        {
+            var final = new Final(FakeMovieGenerator.GetListWithTwoMovies());
+            Assert.Equal(1, final.Matches.Count);
+        }
     }
 }

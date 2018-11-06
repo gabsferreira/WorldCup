@@ -22,6 +22,17 @@ namespace WorldCup.Tests
             };
         }
 
+        public static IEnumerable<Movie> GetListWithFourMovies()
+        {
+            return new List<Movie>
+            {
+                new Movie("tt3606756", "Os Incríveis 2", 2018, 8.5),
+                new Movie("tt4881806", "Jurassic World: Reino Ameaçado", 2018, 6.7),
+                new Movie("tt3778644", "Han Solo: Uma História Star Wars", 2018, 7.2),
+                new Movie("tt3501632", "Thor: Ragnarok", 2017, 7.9),
+            };
+        }
+
         public static IEnumerable<Movie> GetListWithTwoMovies()
         {
             return new List<Movie>
