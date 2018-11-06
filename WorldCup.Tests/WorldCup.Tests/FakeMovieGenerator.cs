@@ -5,9 +5,9 @@ using WorldCupAPI.Models;
 
 namespace WorldCup.Tests
 {
-    public class MovieGenerator
+    public class FakeMovieGenerator
     {
-        public static List<Movie> GetDefaultMovieList()
+        public static IList<Movie> GetDefaultMovieList()
         {
             Movie newMovie = new Movie("tt3606756", "Os Incríveis 2", 2018, 8.5);
 
