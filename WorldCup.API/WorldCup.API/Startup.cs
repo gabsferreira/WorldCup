@@ -28,6 +28,7 @@ namespace WorldCup.API
         {
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
 
+            services.AddCors();
             services.AddAutoMapper();
         }
 
@@ -42,6 +43,12 @@ namespace WorldCup.API
             {
                 app.UseHsts();
             }
+
+            app.UseCors(
+                options => options.AllowAnyOrigin()
+                .AllowAnyMethod()
+                .AllowAnyHeader()
+            );
 
             app.UseHttpsRedirection();
             app.UseMvc();
