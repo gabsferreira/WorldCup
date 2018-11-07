@@ -14,7 +14,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace WorldCup.Tests
 {
-    public class WorldCupShould
+    public class CupShould
     {
         [Fact]
         public void RunAndHaveTheRightMovieOrder()
